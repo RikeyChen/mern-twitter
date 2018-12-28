@@ -5,6 +5,7 @@ const app = express();
 
 const bodyParser = require('body-parser');
 const passport = require('passport');
+
 const db = require('./config/keys').mongoURI;
 const users = require('./routes/api/users');
 const tweets = require('./routes/api/tweets');
@@ -14,7 +15,6 @@ mongoose
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch(err => console.log(err));
 
-// app.get('/', (req, res) => res.send('This is working'));
 app.use(passport.initialize());
 require('./config/passport');
 
