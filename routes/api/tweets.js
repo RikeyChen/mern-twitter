@@ -5,8 +5,6 @@ const passport = require('passport');
 const validateTweetInput = require('../../validation/tweets');
 const Tweet = require('../../models/Tweet');
 
-router.get('/test', (req, res) => res.json({ msg: 'This is the tweets route' }));
-
 router.post('/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
