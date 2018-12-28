@@ -5,6 +5,7 @@ const app = express();
 
 const bodyParser = require('body-parser');
 const db = require('./config/keys').mongoURI;
+const passport = require('passport');
 const users = require('./routes/api/users');
 const tweets = require('./routes/api/tweets');
 
@@ -13,7 +14,10 @@ mongoose
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch(err => console.log(err));
 
-app.get('/', (req, res) => res.send('This is working'));
+// app.get('/', (req, res) => res.send('This is working'));
+app.use(passport.initialize());
+require('./config/passport');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/api/users', users);
